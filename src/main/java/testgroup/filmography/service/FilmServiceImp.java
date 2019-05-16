@@ -11,7 +11,7 @@ import java.util.List;
 public class FilmServiceImp implements FilmService {
 
     private FilmDAO filmDAO = new FilmDAOImpl();
-
+    private int i = 1;
     @Override
     @Transactional
     public List<Film> allFilms() {
