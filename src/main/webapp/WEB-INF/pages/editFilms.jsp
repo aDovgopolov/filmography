@@ -2,12 +2,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <c:if test = "${empty film.title}">
+        <title>Add Title</title>
+    </c:if>
+    <c:if test = "${empty film.title}">
+        <title>Edit Title</title>
+    </c:if>
 </head>
 <body>
-<c:url value="/edit" var="var"/>
+<c:if test = "${empty film.title}">
+    <c:url value="/add" var="var"/>
+</c:if>
+<c:if test = "${!empty film.title}">
+    <c:url value="/edit" var="var"/>
+</c:if>
 <form action="${var}" method="POST">
-    <input type="hidden" name="id" value="${film.id}">
+    <c:if test = "${!empty film.title}">
+        <input type="hidden" name="id" value="${film.id}">
+    </c:if>
     <label for="title">Title</label>
     <input type="text" name="title" id="title">
     <label for="year">Year</label>
@@ -16,7 +28,13 @@
     <input type="text" name="genre" id="genre">
     <label for="watched">Watched</label>
     <input type="text" name="watched" id="watched">
-    <input type="submit" value="Edit film">
+    <c:if test = "${empty film.title}">
+
+        <input type="submit" value="Add film">
+    </c:if>
+    <c:if test = "${!empty film.title}">
+        <input type="submit" value="Edit film">
+    </c:if>
 </form>
 </body>
 </html>

@@ -6,10 +6,7 @@ import javax.servlet.Filter;
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-//    @Override
-//    protected Class[] getRootConfigClasses() {
-//        return new Class[0];
-//    }
+
     protected Class[] getRootConfigClasses() {
         return new Class[]{HibernateConfig.class};
     }
@@ -23,20 +20,6 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
-//    @Override
-//    protected Class<?>[] getRootConfigClasses() {
-//        return new Class[]{HibernateConfig.class};
-//    }
-//
-//    @Override
-//    protected Class<?>[] getServletConfigClasses() {
-//        return new Class[]{WebConfig.class};
-//    }
-//
-//    @Override
-//    protected String[] getServletMappings() {
-//        return new String[]{"/"};
-//    }
 
     protected Filter[] getServletFilters() {
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
@@ -44,4 +27,5 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
         characterEncodingFilter.setForceEncoding(true);
         return new Filter[] {characterEncodingFilter};
     }
+
 }

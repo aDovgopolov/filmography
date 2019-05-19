@@ -1,5 +1,6 @@
 package testgroup.filmography.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import testgroup.filmography.dao.FilmDAO;
@@ -7,11 +8,16 @@ import testgroup.filmography.dao.FilmDAOImpl;
 import testgroup.filmography.model.Film;
 import java.util.List;
 
-//@Service
+@Service
 public class FilmServiceImp implements FilmService {
 
-    private FilmDAO filmDAO = new FilmDAOImpl();
-    private int i = 1;
+    private FilmDAO filmDAO;
+
+    @Autowired
+    public void setFilmDAO(FilmDAOImpl filmDAOimp) {
+        this.filmDAO = filmDAOimp;
+    }
+
     @Override
     @Transactional
     public List<Film> allFilms() {
